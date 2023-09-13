@@ -18,7 +18,7 @@ public class Main {
             }
             else if(i==2)
             {
-                System.out.println("Выполняем команду 2");
+                stepTracker.changeStepGoal();
             }
             else if(i==3)
             {

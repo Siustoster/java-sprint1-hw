@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class StepTracker {
     Scanner scanner;
     MonthData[] monthToData = new MonthData[12];
+    int goalByStepsPerDay=10000;
     StepTracker(Scanner scan){
         scanner = scan;
         for (int i=0; i< monthToData.length;i++)
@@ -36,4 +37,16 @@ public class StepTracker {
         MonthData monthData = monthToData[monthNum-1];
         monthData.days[dayNum-1]=steps;
     }
+    void changeStepGoal(){
+        System.out.println("Введите новую цель (шагов в день):");
+        int newGoalSteps = scanner.nextInt();
+        if ( newGoalSteps<=0)
+        {
+            System.out.println("Некорректное количество шагов");
+            return;
+        }
+        goalByStepsPerDay = newGoalSteps;
+        System.out.println("Идем к цели "+goalByStepsPerDay+" шагов!");
+    }
+
 }
