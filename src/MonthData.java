@@ -36,7 +36,8 @@ public class MonthData {
             if(days[i]>=goalByStepsPerDay)
                 currentSeries++;
             else {
-                bestSeries = currentSeries;
+                if (currentSeries>bestSeries)
+                    bestSeries = currentSeries;
                 currentSeries=0;
             }
         }

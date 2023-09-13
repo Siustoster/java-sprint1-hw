@@ -22,7 +22,7 @@ public class Main {
             }
             else if(i==3)
             {
-                System.out.println("Выполняем команду 3");
+                stepTracker.printStatistics();
             }
             else {
                 System.out.println("Неизвестная команда");

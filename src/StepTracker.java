@@ -1,9 +1,13 @@
+import java.time.Month;
 import java.util.Scanner;
+
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class StepTracker {
     Scanner scanner;
     MonthData[] monthToData = new MonthData[12];
     int goalByStepsPerDay=10000;
+    Converter converter = new Converter();
     StepTracker(Scanner scan){
         scanner = scan;
         for (int i=0; i< monthToData.length;i++)
@@ -47,6 +51,36 @@ public class StepTracker {
         }
         goalByStepsPerDay = newGoalSteps;
         System.out.println("Идем к цели "+goalByStepsPerDay+" шагов!");
+    }
+    void printStatistics()
+    {
+        System.out.println("Введите номер месяца:");
+        int monthNum = scanner.nextInt();
+        if((monthNum<1) || (monthNum>12))
+        {
+            System.out.println("Некорректный номер месяца");
+            return;
+        }
+        MonthData monthData = monthToData[monthNum-1];
+        System.out.println("Количество пройденных шагов по дням:");
+        monthData.printDaysAndStepsFromMonth();
+        System.out.println("Общее количество шагов за месяц "+monthData.sumStepsFromMonth() );
+        System.out.println("максимальное пройденное количество шагов в месяце" + monthData.maxSteps());
+        System.out.println("Среднее количество шагов "+ round(monthData.sumStepsFromMonth()/monthData.days.length,2));
+        double distance=0;
+        for(int i=0;i<monthData.days.length;i++)
+        {
+            distance += converter.convertToKm(monthData.days[i]);
+        }
+        System.out.println("Пройденная дистанция "+distance + " км");
+        double calls=0;
+        for(int i=0;i<monthData.days.length;i++)
+        {
+            calls += converter.convertSpetsToKilocalories(monthData.days[i]);
+        }
+        System.out.println("Сожжено "+calls + " кКал");
+        System.out.println("лучшая серия (дней): "+monthData.bestSeries(goalByStepsPerDay));
+
     }
 
 }
