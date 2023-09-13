@@ -1,7 +1,9 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
+        StepTracker stepTracker = new StepTracker(scanner);
         while (true) {
             printMenu();
             int i = scanner.nextInt();
@@ -12,7 +14,7 @@ public class Main {
             }
             else if(i==1)
             {
-                System.out.println("Выполняем команду 1");
+                stepTracker.addNewNumberStepsPerDay();
             }
             else if(i==2)
             {
