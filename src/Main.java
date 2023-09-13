@@ -5,8 +5,29 @@ public class Main {
         while (true) {
             printMenu();
             int i = scanner.nextInt();
+            if(i==0)
+            {
+                System.out.println(("Завершаем работу"));
+                return;
+            }
+            else if(i==1)
+            {
+                System.out.println("Выполняем команду 1");
+            }
+            else if(i==2)
+            {
+                System.out.println("Выполняем команду 2");
+            }
+            else if(i==3)
+            {
+                System.out.println("Выполняем команду 3");
+            }
+            else {
+                System.out.println("Неизвестная команда");
+            }
+            }
         }
-    }
+
     public static void printMenu()
     {
         System.out.println("Выберите действие");
