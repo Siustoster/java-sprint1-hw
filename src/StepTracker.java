@@ -1,8 +1,6 @@
 import java.time.Month;
 import java.util.Scanner;
 
-import static jdk.nashorn.internal.objects.NativeMath.round;
-
 public class StepTracker {
     Scanner scanner;
     MonthData[] monthToData = new MonthData[12];
@@ -33,7 +31,7 @@ public class StepTracker {
         }
         System.out.println("Введите количество шагов:");
         int steps = scanner.nextInt();
-        if(steps<0)
+        if(steps<1)
         {
             System.out.println("Некорректное количество шагов");
             return;

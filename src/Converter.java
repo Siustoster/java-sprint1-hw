@@ -1,12 +1,13 @@
-import static jdk.nashorn.internal.objects.NativeMath.round;
-
 public class Converter {
+    static final double kmInOneStep = 0.00075;
+    static final double kkalInOneStep = 0.05;
     double convertToKm(int steps)
     {
-        return steps*0.00075; //Для ревьювера: я ведь могу использовать по желанию другой тип, что бы точнее считать?
+
+        return steps*kmInOneStep; //Для ревьювера: я ведь могу использовать по желанию другой тип, что бы точнее считать?
     }
     double convertStepsToKilocalories(int steps)
     {
-        return steps*0.05;
+        return steps*kkalInOneStep;
     }
 }
